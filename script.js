@@ -7,24 +7,6 @@ const uncheckedCountSpan = document.getElementById('unchecked-count');
 
 inputBox.focus();
 
-// test();
-
-// function test(){
-// document.querySelectorAll("input[type=checkbox]").forEach(i=>{
-//     i.onclick = function(){
-//         updateCount();
-//  }
-// });
-
-// document.querySelectorAll(".todo-container").forEach(i=>{
-//     i.onclick = function(){
-//         this.querySelector("input[type=checkbox").click();
-//  }
-// });
-
-// console.log("test");
-// }
-
 inputBox.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {

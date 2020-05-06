@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="aa">
+    <meta name="description" content="terrible messy todo app">
+
     <title>the terrible todo</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
   </head>
   <body>
+    <!-- center it for larger screens -->
     <div class="container center">
       <h1 class="center title">todo simple</h1>
       <div class="flow-right controls">
         <span>item count: <span id="item-count">0</span></span>
         <span>unchecked count: <span id="unchecked-count">0</span></span>
       </div>
-
+      <!-- input box -->
       <input placeholder="what would like to do" class="center" id="todo-inputBox">
+      <!-- button -->
       <button class="button center" onClick="newTodo()">new todo</button>
-
-      <!-- <h2>list</h2> -->
       <ul id="todo-list" class="todo-list">
-
-        <!-- <div class="todo-container"> -->
-        <!--     test -->
-        <!-- </div> -->
-
+          <!-- todo elements go here -->
       </ul>
     </div>
     <script src="./script.js"></script>

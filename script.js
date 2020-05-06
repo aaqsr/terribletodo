@@ -1,20 +1,29 @@
-// const classNames = {
-//     TODO_ITEM: 'todo-container',
-//     TODO_CHECKBOX: 'todo-checkbox',
-//     TODO_TEXT: 'todo-text',
-//     TODO_DELETE: 'todo-delete',
-// }
-
 const list = document.getElementById('todo-list');
 const inputBox = document.getElementById("todo-inputBox");
-const checkboxes = document.querySelectorAll(".todo-checkbox");
 
 
 const itemCountSpan = document.getElementById('item-count');
-// const uncheckedCountSpan = document.getElementById('unchecked-count');
+const uncheckedCountSpan = document.getElementById('unchecked-count');
 
-updateCount();
 inputBox.focus();
+
+// test();
+
+// function test(){
+// document.querySelectorAll("input[type=checkbox]").forEach(i=>{
+//     i.onclick = function(){
+//         updateCount();
+//  }
+// });
+
+// document.querySelectorAll(".todo-container").forEach(i=>{
+//     i.onclick = function(){
+//         this.querySelector("input[type=checkbox").click();
+//  }
+// });
+
+// console.log("test");
+// }
 
 inputBox.addEventListener("keyup", function(event) {
     event.preventDefault();
@@ -24,28 +33,26 @@ inputBox.addEventListener("keyup", function(event) {
 });
 
 function newTodo() {
-    // alert('New TODO button clicked!');
     if (inputBox.value.trim() === "") {
         alert("Please type something first :)");
     } else {
         const todoItem = document.createElement("div");
         todoItem.classList.add("todo-container");
 
-        // const todoCheckboxContainer = document.createElement("span");
-        // todoCheckboxContainer.classList.add("todo-checkbox")
-
         const todoCheckbox = document.createElement("input");
         todoCheckbox.type = "checkbox";
         todoCheckbox.classList.add("todo-checkbox");
-        // todoCheckboxContainer.appendChild(todoCheckbox);
         todoItem.appendChild(todoCheckbox);
 
         const todoText = document.createElement("span");
         todoText.textContent = inputBox.value.trim();
         todoItem.appendChild(todoText);
 
-
         list.appendChild(todoItem);
+
+        todoItem.onclick = function () { this.querySelector("input[type=checkbox").click(); }
+        todoCheckbox.onclick = function () { updateCount(); };
+
 
         updateCount();
     }
@@ -57,13 +64,5 @@ function newTodo() {
 function updateCount () {
     itemCountSpan.textContent = list.childElementCount;
 
-    let checked = 0;
-    const checkboxes = document.querySelectorAll(".todo-checkbox");
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked === true) {
-            checked++
-        }
-    }
-
-    // uncheckedCountSpan.textContent = list.childElementCount -
+    uncheckedCountSpan.textContent = itemCountSpan.textContent - document.querySelectorAll('input:checked').length;
 }
